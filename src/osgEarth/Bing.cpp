@@ -74,6 +74,7 @@ const std::string& BingImageLayer::getAPIKey() const {
 void
 BingImageLayer::init()
 {
+std::cout << "#######################################################" << std::endl;
     ImageLayer::init();
 
     _debugDirect = false;
@@ -83,7 +84,7 @@ BingImageLayer::init()
         _debugDirect = true;
 
     // disable caching by default due to TOS
-    layerHints().cachePolicy() = CachePolicy::NO_CACHE;    
+    //layerHints().cachePolicy() = CachePolicy::NO_CACHE;    
 }
 
 BingImageLayer::~BingImageLayer()
@@ -255,7 +256,7 @@ BingImageLayer::getDirectURI(const TileKey& key) const
     return Stringify()
         << "https://ecn.t"
         << _apiCount%4
-        << ".tiles.virtualearth.net/tiles/h"
+        << ".tiles.virtualearth.net/tiles/a"
         << getQuadKey(key)
         << ".jpeg?g=1236";
 }
@@ -291,7 +292,7 @@ BingElevationLayer::init()
     ElevationLayer::init();
 
     // disable caching by default due to TOS
-    layerHints().cachePolicy() = CachePolicy::NO_CACHE;
+    //layerHints().cachePolicy() = CachePolicy::NO_CACHE;
 
     _globalGeodetic = Profile::create(Profile::GLOBAL_GEODETIC);
 
